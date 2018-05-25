@@ -1,0 +1,33 @@
+{
+  "name": "dnspod.js",
+  "version": "0.1.0",
+  "description": "js sdk for dnspod",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeliex/dnspod.js.git"
+  },
+  "keywords": [
+    "dnspod"
+  ],
+  "author": "yeliex <yelies@yeliex.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yeliex/dnspod.js/issues"
+  },
+  "homepage": "https://github.com/yeliex/dnspod.js#readme",
+  "dependencies": {
+    "@types/lodash": "^4.14.109",
+    "@types/qs": "^6.5.1",
+    "autofetch": "^4.1.0",
+    "lodash": "^4.17.10",
+    "qs": "^6.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "^10.1.2",
+    "typescript": "^2.8.3"
+  }
+}
