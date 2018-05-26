@@ -6,7 +6,7 @@ const dnspod = new DNSPod({
 });
 
 const main = async () => {
-    console.log(await dnspod.User.Telephone.VarifyCode('15988545765'));
+
 };
 
 main();

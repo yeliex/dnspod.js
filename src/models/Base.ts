@@ -16,6 +16,12 @@ export namespace Props {
   export interface ClassProps extends BaseProps {
     namespace: string;
   }
+
+  export interface RequestOptions {
+    [key: string]: any;
+
+    data: any
+  }
 }
 
 fetch.callback(async (res: any) => {
@@ -42,11 +48,11 @@ export default class Base {
 
   protected request(name: string): Promise<any>;
 
-  protected request(name: string, options?: any): Promise<any>;
+  protected request(name: string, options?: Props.RequestOptions): Promise<any>;
 
-  protected request(namespace: string, name: string, options?: any): Promise<any>;
+  protected request(namespace: string, name: string, options?: Props.RequestOptions): Promise<any>;
 
-  protected async request(namespace: string, name?: any, options?: any) {
+  protected async request(namespace: string, name?: any, options?: Props.RequestOptions) {
     if (!options && namespace && typeof name === 'object') {
       options = name;
       name = namespace;
@@ -56,7 +62,7 @@ export default class Base {
       namespace = this.namespace;
     }
 
-    options = options || {};
+    options = options || {data: {}};
 
     options.method = 'POST';
 

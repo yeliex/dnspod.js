@@ -4,8 +4,23 @@
   "description": "js sdk for dnspod",
   "main": "index.js",
   "scripts": {
+    "start": "tsc -w",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "clean": "rm -rf lib/",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "lib",
+    "src",
+    "LICENSE",
+    "package.json",
+    "tsconfig.json",
+    "README.md",
+    "yarn.lock",
+    ".npmrc"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yeliex/dnspod.js.git"
