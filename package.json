@@ -1,6 +1,6 @@
 {
   "name": "dnspod.js",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "js sdk for dnspod",
   "main": "index.js",
   "scripts": {
