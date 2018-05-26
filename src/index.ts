@@ -11,7 +11,7 @@ export namespace Props {
   }
 }
 
-export default class DNSPod {
+class DNSPod {
   public readonly Info: Info;
   public readonly User: User;
   public readonly Domain: Domain;
@@ -26,3 +26,7 @@ export default class DNSPod {
     this.Batch = new Batch(props);
   }
 }
+
+module.exports = DNSPod;
+
+export default DNSPod;
