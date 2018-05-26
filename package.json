@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc -w",
-    "prebuild": "npm run clean",
-    "build": "tsc",
+    "prebuildOnly": "npm run clean",
+    "buildOnly": "tsc",
     "clean": "rm -rf lib/",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,8 +18,7 @@
     "package.json",
     "tsconfig.json",
     "README.md",
-    "yarn.lock",
-    ".npmrc"
+    "yarn.lock"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
