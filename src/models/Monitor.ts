@@ -61,15 +61,15 @@ export default class Monitor extends Base {
    * @returns {Promise<any>}
    */
   public async Listsubdomain(domain: DomainProps.DomainOrDomainId) {
-    const data: any = {};
+    const body: any = {};
 
     if (Domain.isDomainId(domain)) {
-      data.domain_id = domain;
+      body.domain_id = domain;
     } else {
-      data.domain = domain;
+      body.domain = domain;
     }
 
-    const res = await this.request('Listsubdomain', {data});
+    const res = await this.request('Listsubdomain', {body});
 
     return {
       domain: res.domain,
@@ -85,15 +85,15 @@ export default class Monitor extends Base {
    * @returns {Promise<any>}
    */
   public async Listsubvalue({domain, subDomain}: Props.ListsubvalueProps) {
-    const data: any = {sub_domain: subDomain};
+    const body: any = {sub_domain: subDomain};
 
     if (Domain.isDomainId(domain)) {
-      data.domain_id = domain;
+      body.domain_id = domain;
     } else {
-      data.domain = domain;
+      body.domain = domain;
     }
 
-    const res = await this.request('Listsubvalue', {data});
+    const res = await this.request('Listsubvalue', {body});
 
     return {
       domain: res.domain,
@@ -124,7 +124,7 @@ export default class Monitor extends Base {
    */
   public async Create(props: Props.CreateProps) {
     const res = await this.request('List', {
-      data: {
+      body: {
         domain_id: props.domainId,
         record_id: props.recordId,
         port: props.port,
@@ -154,7 +154,7 @@ export default class Monitor extends Base {
    */
   public async Modify(props: Props.ModifyProps) {
     await this.request('Modify', {
-      data: {
+      body: {
         monitor_id: props.monitorId,
         port: props.port,
         monitor_interval: props.monitorInterval,
@@ -183,7 +183,7 @@ export default class Monitor extends Base {
    */
   public async Remove(id: string) {
     await this.request('Remove', {
-      data: {
+      body: {
         monitor_id: id
       }
     });
@@ -199,7 +199,7 @@ export default class Monitor extends Base {
    */
   public async Info(id: string) {
     const res = await this.request('Info', {
-      data: {
+      body: {
         monitor_id: id
       }
     });
@@ -216,7 +216,7 @@ export default class Monitor extends Base {
    */
   public async Setstatus({monitorId, status}: Props.SetstatusProps) {
     await this.request('Setstatus', {
-      data: {
+      body: {
         monitor_id: monitorId,
         status
       }
@@ -239,7 +239,7 @@ export default class Monitor extends Base {
    */
   public async Gethistory({monitorId, hours}: Props.GethistoryProps) {
     const res = await this.request('Gethistory', {
-      data: {
+      body: {
         monitor_id: monitorId,
         hours
       }
@@ -285,7 +285,7 @@ export default class Monitor extends Base {
    */
   public async Getdowns({offset, length}: Props.GetDownProps) {
     const res = await this.request('Userdesc', {
-      data: {
+      body: {
         offset, length
       }
     });

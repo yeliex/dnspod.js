@@ -38,7 +38,7 @@ export default class Batch extends Base {
       Create: async ({domains, revordValue}: Props.DomainCreateProps) => {
         domains = Array.isArray(domains) ? domains : [domains];
         const res = await this.request('Domain.Create', {
-          data: {
+          body: {
             domains: domains.join(','),
             record_value: revordValue
           }
@@ -66,7 +66,7 @@ export default class Batch extends Base {
         records = Array.isArray(records) ? records : [records];
 
         const res = await this.request('Record.Create', {
-          data: {
+          body: {
             domain_id: domainId.join(','),
             records: JSON.stringify(records)
           }
@@ -91,7 +91,7 @@ export default class Batch extends Base {
         recordId = Array.isArray(recordId) ? recordId : [recordId];
 
         const res = await this.request('Record.Create', {
-          data: {
+          body: {
             record_id: recordId.join(','),
             change,
             change_to: changeTo,
@@ -116,7 +116,7 @@ export default class Batch extends Base {
    */
   public async Detail(id: number) {
     const res = await this.request('Detail', {
-      data: {
+      body: {
         job_id: id
       }
     });

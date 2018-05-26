@@ -20,7 +20,7 @@ export namespace Props {
   export interface RequestOptions {
     [key: string]: any;
 
-    data: any
+    body: any
   }
 }
 
@@ -62,7 +62,7 @@ export default class Base {
       namespace = this.namespace;
     }
 
-    options = options || {data: {}};
+    options = options || {body: {}};
 
     options.method = 'POST';
 

@@ -68,7 +68,7 @@ export default class Record extends Base {
    * @returns {Promise<any>}
    */
   public async Create(props: Props.CreateProps) {
-    const data: any = {
+    const body: any = {
       sub_domain: props.subDomain,
       record_type: props.recordType,
       record_line: props.recordLine,
@@ -81,12 +81,12 @@ export default class Record extends Base {
     };
 
     if (Domain.isDomainId(props.domain)) {
-      data.domain_id = props.domain;
+      body.domain_id = props.domain;
     } else {
-      data.domain = props.domain;
+      body.domain = props.domain;
     }
 
-    const res = await this.request('Create', {data});
+    const res = await this.request('Create', {body});
 
     return res.record;
   }
@@ -102,7 +102,7 @@ export default class Record extends Base {
    * @returns {Promise<any>}
    */
   public async List({domain, subDomain, offset, keyword, length}: Props.ListProps) {
-    const data: any = {
+    const body: any = {
       sub_domain: subDomain,
       offset,
       keyword,
@@ -110,12 +110,12 @@ export default class Record extends Base {
     };
 
     if (Domain.isDomainId(domain)) {
-      data.domain_id = domain;
+      body.domain_id = domain;
     } else {
-      data.domain = domain;
+      body.domain = domain;
     }
 
-    const res = await this.request('List', {data});
+    const res = await this.request('List', {body});
 
     return {
       domain: res.domain,
@@ -131,7 +131,7 @@ export default class Record extends Base {
    * @returns {Promise<any>}
    */
   public async Modify(props: Props.ModifyProps) {
-    const data: any = {
+    const body: any = {
       record_id: props.recordId,
       sub_domain: props.subDomain,
       record_type: props.recordType,
@@ -145,12 +145,12 @@ export default class Record extends Base {
     };
 
     if (Domain.isDomainId(props.domain)) {
-      data.domain_id = props.domain;
+      body.domain_id = props.domain;
     } else {
-      data.domain = props.domain;
+      body.domain = props.domain;
     }
 
-    const res = await this.request('Modify', {data});
+    const res = await this.request('Modify', {body});
 
     return res.record;
   }
@@ -163,16 +163,16 @@ export default class Record extends Base {
    * @returns {Promise<boolean>}
    */
   public async Remove({domain, recordId}: Props.RemoveProps) {
-    const data: any = {record_id: recordId};
+    const body: any = {record_id: recordId};
 
 
     if (Domain.isDomainId(domain)) {
-      data.domain_id = domain;
+      body.domain_id = domain;
     } else {
-      data.domain = domain;
+      body.domain = domain;
     }
 
-    await this.request('Remove', {data});
+    await this.request('Remove', {body});
 
     return true;
   }
@@ -189,7 +189,7 @@ export default class Record extends Base {
    * @returns {Promise<any>}
    */
   public async DDNS({domain, subDomain, recordId, recordLine, recordLineId, value}: Props.DDNSProps) {
-    const data: any = {
+    const body: any = {
       sub_domain: subDomain,
       record_id: recordId,
       record_line: recordLine,
@@ -198,12 +198,12 @@ export default class Record extends Base {
     };
 
     if (Domain.isDomainId(domain)) {
-      data.domain_id = domain;
+      body.domain_id = domain;
     } else {
-      data.domain = domain;
+      body.domain = domain;
     }
 
-    const res = await this.request('Ddns', {data});
+    const res = await this.request('Ddns', {body});
 
     return res.record;
   }
@@ -217,18 +217,18 @@ export default class Record extends Base {
    * @returns {Promise<any>}
    */
   public async Remark({domain, remark, recordId}: Props.RemarkProps) {
-    const data: any = {
+    const body: any = {
       record_id: recordId,
       remark
     };
 
     if (Domain.isDomainId(domain)) {
-      data.domain_id = domain;
+      body.domain_id = domain;
     } else {
-      data.domain = domain;
+      body.domain = domain;
     }
 
-    await this.request('Remark', {data});
+    await this.request('Remark', {body});
 
     return true;
   }
@@ -241,17 +241,17 @@ export default class Record extends Base {
    * @returns {Promise<any>}
    */
   public async Info({domain, recordId}: Props.RecordProps) {
-    const data: any = {
+    const body: any = {
       record_id: recordId
     };
 
     if (Domain.isDomainId(domain)) {
-      data.domain_id = domain;
+      body.domain_id = domain;
     } else {
-      data.domain = domain;
+      body.domain = domain;
     }
 
-    const res = await this.request('Info', {data});
+    const res = await this.request('Info', {body});
 
     return {record: res.record, domain: res.domain};
   }
@@ -265,15 +265,15 @@ export default class Record extends Base {
    * @returns {Promise<any>}
    */
   public async Status({domain, recordId, status}: Props.StatusProps) {
-    const data: any = {record_id: recordId, status};
+    const body: any = {record_id: recordId, status};
 
     if (Domain.isDomainId(domain)) {
-      data.domain_id = domain;
+      body.domain_id = domain;
     } else {
-      data.domain = domain;
+      body.domain = domain;
     }
 
-    const res = await this.request('Status', {data});
+    const res = await this.request('Status', {body});
 
     return res.record;
   }
