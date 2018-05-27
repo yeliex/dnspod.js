@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "js sdk for dnspod",
   "main": "index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "start": "tsc -w",
     "prebuildOnly": "npm run clean",
