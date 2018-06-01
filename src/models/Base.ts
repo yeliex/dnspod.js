@@ -24,15 +24,6 @@ export namespace Props {
   }
 }
 
-fetch.callback(async (res: any) => {
-  const data = await res.json();
-
-  if (data.status && data.status.code === '1') {
-    return data;
-  }
-  return Promise.reject(data.status.message);
-});
-
 export default class Base {
   private readonly access_token: string;
   private readonly access_token_id: string;
@@ -81,6 +72,12 @@ export default class Base {
       body: stringify(options.body)
     });
 
-    return res;
+    const data = await res.json();
+
+
+    if (data.status && data.status.code === '1') {
+      return data;
+    }
+    return Promise.reject(data.status.message);
   }
 }
