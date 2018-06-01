@@ -26,6 +26,8 @@ class DNSPod {
   }
 }
 
+export default DNSPod;
+
 module.exports = DNSPod;
 
 Object.defineProperties(module.exports, {
