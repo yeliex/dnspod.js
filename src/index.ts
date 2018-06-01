@@ -28,4 +28,12 @@ class DNSPod {
 
 module.exports = DNSPod;
 
-export default DNSPod;
+Object.defineProperties(module.exports, {
+  default: {
+    value: DNSPod,
+    enumerable: false,
+    configurable: false,
+    writable: false
+  }
+});
+
