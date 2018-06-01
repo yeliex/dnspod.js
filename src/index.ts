@@ -7,7 +7,6 @@ import Batch from './models/Batch';
 
 export namespace Props {
   export interface DNSPodProps extends BaseProps.BaseProps {
-    namespace: never
   }
 }
 
