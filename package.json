@@ -6,8 +6,8 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "start": "tsc -w",
-    "prebuildOnly": "npm run clean",
-    "buildOnly": "tsc",
+    "prebuild": "npm run clean",
+    "build": "tsc",
     "clean": "rm -rf lib/",
     "prepublishOnly": "npm build",
     "test": "echo \"Error: no test specified\" && exit 1"
