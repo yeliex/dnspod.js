@@ -35,6 +35,9 @@ export namespace Props {
     offset?: number;
     length?: number;
     subDomain?: string;
+    recordType?: string;
+    recordLine?: string;
+    recordLineId?: number;
     keyword?: string;
   }
 

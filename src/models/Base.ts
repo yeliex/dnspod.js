@@ -2,15 +2,15 @@ import { fetch } from 'autofetch';
 import { upperFirst } from 'lodash';
 import { stringify } from 'qs';
 
-const {version} = require('../../package.json');
+const { version } = require('../../package.json');
 
 export namespace Props {
   export type AccessToken = string;
   export type AccessTokenId = string;
 
   export interface BaseProps {
-    access_token: AccessToken;
-    access_token_id: AccessTokenId;
+    accessToken: AccessToken;
+    accessTokenId: AccessTokenId;
   }
 
   export interface ClassProps extends BaseProps {
@@ -25,16 +25,16 @@ export namespace Props {
 }
 
 export default class Base {
-  private readonly access_token: string;
-  private readonly access_token_id: string;
+  private readonly accessToken: string;
+  private readonly accessTokenId: string;
   private readonly namespace: string;
   private readonly token: string;
 
   constructor(props: Props.ClassProps) {
-    this.access_token = props.access_token;
-    this.access_token_id = props.access_token_id;
+    this.accessToken = props.accessToken || (props as any).access_token;
+    this.accessTokenId = props.accessTokenId || (props as any).access_token_id;
     this.namespace = upperFirst(props.namespace);
-    this.token = [this.access_token_id, this.access_token].join(',');
+    this.token = [this.accessTokenId, this.accessToken].join(',');
   }
 
   protected request(name: string): Promise<any>;
@@ -53,7 +53,7 @@ export default class Base {
       namespace = this.namespace;
     }
 
-    options = options || {body: {}};
+    options = options || { body: {} };
 
     options.method = 'POST';
 
@@ -69,7 +69,7 @@ export default class Base {
 
     const res = await fetch(`https://dnsapi.cn/${namespace}.${upperFirst(name)}`, {
       ...options,
-      body: stringify(options.body)
+      body: stringify(options.body),
     });
 
     const data = await res.json();
